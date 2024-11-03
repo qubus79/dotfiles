@@ -11,7 +11,11 @@ Fully automated development environment. Read the full documentation
 Install everything with single `curl` command:
 
 ```bash
-curl -fsSL oponomarov.com/d | sh -s -- --all
+git clone https://github.com/qubus79/dotfiles
+/dotfiles/scripts/setup.sh --all
+
+TO NIE DZIAŁA - do zmiany 
+curl -fsSL https://github.com/qubus79/dotfiles/scripts/setup.sh | sh -s -- --all
 ```
 
 ## Running Inside Docker
@@ -22,7 +26,7 @@ pushed](https://github.com/shmileee/dotfiles/actions/workflows/docker.yaml) with
 GitHub Actions or build your own:
 
 ```bash
-docker buildx build --platform linux/amd64 -t dotfiles --progress plain .
+# docker buildx build --platform linux/amd64 -t dotfiles --progress plain .
 ```
 
 ## Installation Flow
