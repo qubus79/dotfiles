@@ -8,7 +8,8 @@ cwd="$(cd "$(dirname ${BASH_SOURCE[0]})" && pwd)"
 apt="sudo apt -y"
 $apt update
 
-sudo add-apt-repository --yes --update ppa:ansible/ansible
+# sudo add-apt-repository --yes --update ppa:ansible/ansible
+brew install ansible
 
 install_from_package_list() {
   export DEBIAN_FRONTEND=noninteractive
