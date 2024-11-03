@@ -18,7 +18,6 @@ packages:
     - zsh
     - fzf
     - zoxide
-    - exa
   # - tmux
   #  - fonts-powerline
     - gcc

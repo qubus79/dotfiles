@@ -52,12 +52,17 @@ download_repository() {
 
 setup_all() {
   test -d "$target" || download_repository
+  echo "⚪ [homebrew] install"
+  "${target}/scripts/common/install_brew.sh" # moved up beacuse homebrew needed to install ansible on linux
   if linux; then
+    echo "⚪ [ansible] install and bare minimum dependencies"
     "${target}/scripts/linux/install_dependencies.sh"
+    echo "⚪ [Wezterm] & [syncthing] install"
     "${target}/scripts/linux/add_repositories.sh"
   fi
-  "${target}/scripts/common/install_brew.sh"
+  # "${target}/scripts/common/install_brew.sh"
   if macos; then
+    echo "⚪ [ansible] install"
     brew install ansible
   fi
   "${target}/scripts/common/ansible.sh" --all
