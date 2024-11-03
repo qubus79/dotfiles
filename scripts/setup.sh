@@ -1,4 +1,4 @@
-#!/usr/bin/env zsh
+#!/usr/bin/env bash
 
 set -euoE pipefail
 
@@ -51,7 +51,7 @@ download_repository() {
 }
 
 setup_all() {
-  # test -d "$target" || download_repository
+  test -d "$target" || download_repository
   if linux; then
     "${target}/scripts/linux/install_dependencies.sh"
     "${target}/scripts/linux/add_repositories.sh"

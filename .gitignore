@@ -26,3 +26,6 @@ tags
 
 # mkdocs
 .github/site
+
+#Mac DS_Store
+.DS_Store
