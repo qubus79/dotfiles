@@ -1,0 +1,9 @@
+---
+
+- name: "install tmux"
+  become: true
+  ansible.builtin.apt:
+    name: tmux
+    update_cache: true
+    autoclean: true
+    autoremove: true

@@ -1,0 +1,17 @@
+---
+
+- block:
+
+  - name: "install fonts"
+    community.general.homebrew_cask:
+      name:
+        - font-powerline-symbols
+        - font-meslo-lg-nerd-font
+        - font-fira-code-nerd-font
+        - font-symbols-only-nerd-font
+      install_options: no-quarantine
+      accept_external_apps: true
+
+  tags:
+    - font_install
+    - homebrew

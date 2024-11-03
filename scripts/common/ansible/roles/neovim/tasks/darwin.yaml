@@ -1,0 +1,10 @@
+---
+
+- name: "install"
+  community.general.homebrew:
+    state: head
+    name:
+      # - 'luajit'
+      - neovim
+      - node
+      - jesseduffield/lazygit/lazygit
