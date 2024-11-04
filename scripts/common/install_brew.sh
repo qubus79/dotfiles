@@ -3,10 +3,10 @@
 set -euoE pipefail
 
 install_brew() {
-  echo "⚪ [homebrew] installing..."
+  echo "🚀 [homebrew] installing..."
 
   if command -v brew &> /dev/null; then
-    echo "⚪ [homebrew] already installed."
+    echo "✅ [homebrew] already installed."
 
     return 0
   fi

@@ -1,0 +1,17 @@
+---
+
+- name: "snap | list packages"
+  ansible.builtin.debug:
+    msg: "{{ snaps }}"
+  when: snaps is defined
+
+- name: "snap | install packages"
+  community.general.snap:
+    name: "{{ snaps.pkgs }}"
+  when: snaps.pkgs is defined
+
+- name: "snap | install packages with --classic flag"
+  community.general.snap:
+    name: "{{ snaps.classics }}"
+    classic: true
+  when: snaps.classics is defined

@@ -8,12 +8,12 @@ cwd="$(cd "$(dirname ${BASH_SOURCE[0]})" && pwd)"
 sudo_required() { sudo -n true 2>/dev/null || return 0; }
 
 install_collections() {
-  echo "⚪ [ansible] installing collections..."
+  echo "🚀 [ansible] installing collections..."
   ansible-galaxy collection install community.general
 }
 
 run_playbook() {
-  echo "⚪ [ansible] running playbook..."
+  echo "🚀 [ansible] running playbook..."
   local playbook_opts=()
 
   if sudo_required; then

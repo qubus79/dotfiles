@@ -13,3 +13,6 @@
   tags: homebrew
   when:
     - ansible_system in ["Linux", "Darwin"]
+
+- import_tasks: snap.yaml
+  when: ansible_system == "Linux"

@@ -21,6 +21,9 @@
 
     - name: neovim
       tags: neovim
+    
+    - name: tmux
+      tags: tmux
 
     # - name: lunarvim
     #   tags: lunarvim
@@ -33,9 +36,6 @@
 
     # - name: docker
     #   tags: docker
-
-    - name: tmux
-      tags: tmux
 
     # - name: system_defaults
     #   tags: system_defaults
