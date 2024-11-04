@@ -17,7 +17,7 @@ packages:
     - imagemagick
    
     - stow
-    - neofetch
+    - fastfetch
     - flatpak
 
 brew:
@@ -105,7 +105,7 @@ brew:
       - imagemagick
       - font-symbols-only-nerd-font
 
-      - neofetch
+      - fastfetch
 #Stow
       - stow
       
