@@ -33,6 +33,10 @@ echo "deb https://download.sublimetext.com/ apt/stable/" | sudo tee /etc/apt/sou
 $apt update
 $apt install sublime-text
 
+echo "🚀 [JetBrains Mono Font] installing"
+# JetBrains Mono Font install
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/JetBrains/JetBrainsMono/master/install_manual.sh)"
+
 # echo "🚀 [Sublime Merge] installing..."
 # Sublime Merge install
 # $apt install sublime-merge
@@ -40,7 +44,6 @@ $apt install sublime-text
 echo "🚀 [Tailscale] installing..."
 curl -fsSL https://tailscale.com/install.sh | sh
 sudo tailscale up
-
 
 echo "✅ Additional software installed"
 
