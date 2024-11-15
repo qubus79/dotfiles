@@ -59,7 +59,7 @@ GitHub Actions or build your own:
 ├───► │./install_dependencies.sh├────►│ apt install <essentials> │
 │     └─────────────────────────┘     └──────────────────────────┘
 │
-
+│
 │     ┌──────────────────────┐
 ├───► │./add_repositories.sh │
 │     └──────────────────────┘
