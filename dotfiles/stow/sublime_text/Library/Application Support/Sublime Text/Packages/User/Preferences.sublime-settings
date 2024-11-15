@@ -1,0 +1,52 @@
+{
+	"theme": "Adaptive.sublime-theme",
+
+	// List any packages to ignore here. When removing entries from this list,
+	// a restart may be required if the package contains plugins.
+	"ignored_packages":
+	[
+		"Vintage",
+	],
+	
+	// Sets the colors used within the text area
+	"color_scheme": "Shades of Purple.sublime-color-scheme",
+
+	// Font face & size
+	"font_size": 15,
+	"font_face": "JetBrains Mono",
+
+	// Hides "+" button to open new tabs
+// 	"hide_new_tab_button": true,
+
+	// Highlight line where the cursor is located
+    "highlight_line": true,
+
+	// Makes tabs with modified files more visible
+    "highlight_modified_tabs": true,
+
+	// The number of spaces a tab is considered equal to
+    "tab_size": 4,
+
+	// Set to true to insert spaces when tab is pressed
+    "translate_tabs_to_spaces": true,
+
+    // Characters that are considered to separate words
+//    "word_separators": "./\\()\"'-:,.;<>~!@#%^&*|+=[]{}`~?",
+ 
+    // OS X only: When files are opened from finder, or by dragging onto the
+    // dock icon, this controls if a new window is created or not.
+    "open_files_in_new_window": false,
+
+    "word_wrap": true,
+	"trim_trailing_white_space_on_save": false,
+
+    "spellcheck": true,
+    "ensure_newline_at_eof_on_save": true,
+    "scroll_past_end": true,
+
+
+    "relative_line_numbers": true,
+
+
+	"index_files": true,
+}

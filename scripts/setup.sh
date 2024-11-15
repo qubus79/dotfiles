@@ -3,7 +3,7 @@
 set -euoE pipefail
 
 # shellcheck disable=SC2086
-cwd="$(cd "$(dirname ${BASH_SOURCE[0]})" && pwd)"
+cwd="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 source="https://github.com/qubus79/dotfiles"
 branch="${branch:-main}"
@@ -66,8 +66,8 @@ setup_all() {
     brew install ansible
     echo "✅ [ansible] installed"
   fi
-  echo "🚀 [OhMyZsh] install"
-  "${target}/scripts/common/install_zsh.sh"
+  # echo "🚀 [OhMyZsh] install"
+  # "${target}/scripts/common/install_zsh.sh"
   echo "🚀 [ansilbe] playbook run"
   "${target}/scripts/common/ansible.sh" --all
 }

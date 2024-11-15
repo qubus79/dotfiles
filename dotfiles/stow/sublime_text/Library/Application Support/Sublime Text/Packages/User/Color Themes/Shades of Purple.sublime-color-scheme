@@ -1,0 +1,880 @@
+{
+  "name": "Shades of Purple",
+  "author": "",
+  "globals": {
+    "background": "#2D2B55",
+    "foreground": "#FFFFFF",
+    "caret": "#FFFFFF",
+    "block_caret": "#FFFFFF",
+    "line_highlight": "#1F1F41",
+    "misspelling": "#EC3A37F5",
+    "fold_marker": "#FAD000",
+    "accent": "#FAD000",
+    "gutter": "#28284E",
+    "gutter_foreground": "#A599E9",
+    "line_diff_added": "#00FF000E",
+    "line_diff_modified": "#FAD000",
+    "line_diff_deleted": "#FF000D1A",
+    "selection": "#B362FF88",
+    "inactive_selection": "#2D2B55",
+    "inactive_selection_foreground": "#AAA",
+    "highlight": "#FFFF0336",
+    "find_highlight": "#FFFF0336",
+    "find_highlight_foreground": "#FAD000",
+    "guide": "#A599E90F",
+    "active_guide": "#FFFFFF",
+    "stack_guide": "#A599E9",
+    "brackets_foreground": "#B362FF",
+    "tags_foreground": "#B362FF",
+    "shadow": "#00000026"
+  },
+  "variables": {
+    "black": "#000000",
+    "white": "#FFFFFF",
+    "red": "#EC3A37F5",
+    "green": "#3AD900",
+    "yellow": "#FAD000",
+    "orange": "#FAD000",
+    "blue": "#6943FF",
+    "magenta": "#FF2C70",
+    "cyan": "#80FCFF"
+  },
+  "rules": [
+    {
+      "name": "[COMMENTS] — The main comments color",
+      "foreground": "#B362FF",
+      "font_style": 0,
+      "scope": "comment, punctuation.definition.comment"
+    },
+    {
+      "name": "[Entity] — The main Entity color",
+      "foreground": "#FAD000",
+      "font_style": 0,
+      "scope": "entity"
+    },
+    {
+      "name": "[Constant] — The main constants color",
+      "foreground": "#FF628C",
+      "font_style": 0,
+      "scope": "constant"
+    },
+    {
+      "name": "[Keyword] — The main color for Keyword",
+      "foreground": "#FF9D00",
+      "font_style": 0,
+      "scope": "keyword, storage.type.class.js"
+    },
+    {
+      "name": "[Meta] — The main color for Meta",
+      "foreground": "#9EFFFF",
+      "font_style": 0,
+      "scope": "meta"
+    },
+    {
+      "name": "[invalid] — The main color for invalid",
+      "foreground": "#EC3A37F5",
+      "font_style": 0,
+      "scope": "invalid"
+    },
+    {
+      "name": "[Meta Brace] — The main color for Meta Brace",
+      "foreground": "#E1EFFF",
+      "font_style": 0,
+      "scope": "meta.brace, punctuation.definition.parameters.begin.js, punctuation.definition.parameters.end.js"
+    },
+    {
+      "name": "[Punctuation] — The main color for Punctuation",
+      "foreground": "#E1EFFF",
+      "font_style": 0,
+      "scope": "punctuation"
+    },
+    {
+      "name": "[Punctuation] — Color for Punctuation Parameters",
+      "foreground": "#FFEE80",
+      "font_style": 0,
+      "scope": "punctuation.definition.parameters"
+    },
+    {
+      "name": "[Punctuation] — Color for Punctuation Template Expression",
+      "foreground": "#FFEE80",
+      "font_style": 0,
+      "scope": "punctuation.definition.template-expression"
+    },
+    {
+      "name": "[Storage] — The main color for Storage",
+      "foreground": "#FAD000",
+      "font_style": 0,
+      "scope": "storage"
+    },
+    {
+      "name": "[Storage] — The color for Storage Type Arrow Function",
+      "foreground": "#FAD000",
+      "font_style": 0,
+      "scope": "storage.type.function.arrow"
+    },
+    {
+      "name": "[String]",
+      "foreground": "#A5FF90",
+      "font_style": 0,
+      "scope": "string, punctuation.definition.string"
+    },
+    {
+      "name": "[String] Template Color",
+      "foreground": "#3AD900",
+      "font_style": 0,
+      "scope": "string.template, punctuation.definition.string.template"
+    },
+    {
+      "name": "[Support]",
+      "foreground": "#80FFBB",
+      "font_style": 0,
+      "scope": "support"
+    },
+    {
+      "name": "[Support] Function Colors",
+      "foreground": "#FF9D00",
+      "font_style": 0,
+      "scope": "support.function"
+    },
+    {
+      "name": "[Support] Variable Property DOM Colors",
+      "foreground": "#9EFFFF",
+      "font_style": 0,
+      "scope": "support.variable.property.dom"
+    },
+    {
+      "name": "[Variable]",
+      "foreground": "#E1EFFF",
+      "font_style": 0,
+      "scope": "variable"
+    },
+    {
+      "name": "[INI] - Color for Entity",
+      "foreground": "#E1EFFF",
+      "font_style": 0,
+      "scope": "source.ini entity, meta.embedded.block.ini, source.ini"
+    },
+    {
+      "name": "[INI] - Color for Keyword",
+      "foreground": "#FAD000",
+      "font_style": 0,
+      "scope": "source.ini keyword, keyword.other.definition.ini"
+    },
+    {
+      "name": "[INI] - Color for Punctuation Definition",
+      "foreground": "#FFEE80",
+      "font_style": 0,
+      "scope": "source.ini punctuation.definition"
+    },
+    {
+      "name": "[INI] - Color for Punctuation Separator",
+      "foreground": "#FF9D00",
+      "font_style": 0,
+      "scope": "source.ini punctuation.separator, punctuation.separator.key-value.ini"
+    },
+    {
+      "name": "[CSS] - Color for Entity",
+      "foreground": "#3AD900",
+      "font_style": 0,
+      "scope": "source.css entity, source.stylus entity"
+    },
+    {
+      "name": "[CSS] - Color for Class Selector",
+      "foreground": "#9EFFFF",
+      "font_style": 0,
+      "scope": "entity.other.attribute-name.class.css"
+    },
+    {
+      "name": "[CSS] - Color for ID Selector",
+      "foreground": "#FFB454",
+      "font_style": 0,
+      "scope": "entity.other.attribute-name.id.css, entity.other.attribute-name.pseudo-class.css"
+    },
+    {
+      "name": "[CSS] - Color for Element Selector",
+      "foreground": "#9EFFFF",
+      "font_style": 0,
+      "scope": "entity.name.tag"
+    },
+    {
+      "name": "[CSS] - Color for Support",
+      "foreground": "#A5FF90",
+      "font_style": 0,
+      "scope": "source.css support, entity.name.tag.css, source.stylus support"
+    },
+    {
+      "name": "[CSS] - Color for Constant",
+      "foreground": "#FFEE80",
+      "font_style": 0,
+      "scope": "source.css constant, source.css support.constant, source.stylus constant, source.stylus support.constant"
+    },
+    {
+      "name": "[CSS] - Color for String",
+      "foreground": "#FFEE80",
+      "font_style": 0,
+      "scope": "source.css string, source.css punctuation.definition.string, source.stylus string, source.stylus punctuation.definition.string"
+    },
+    {
+      "name": "[CSS] - Color for Variable",
+      "foreground": "#9EFFFF",
+      "font_style": 0,
+      "scope": "source.css variable, source.stylus variable"
+    },
+    {
+      "name": "[HTML] - Color for Entity Name",
+      "foreground": "#9EFFFF",
+      "font_style": 0,
+      "scope": "text.html.basic entity.name, punctuation.definition.tag.html, entity.name.tag.inline.any.html, meta.tag.other.html, meta.tag.inline.any.html, punctuation.definition.tag.begin.html, punctuation.definition.tag.end.html, entity.name.tag, meta.tag.other.html, meta.tag.other.js, meta.tag.other.tsx, entity.name.tag.tsx, entity.name.tag.js, entity.name.tag, meta.tag.js, meta.tag.tsx, meta.tag.html"
+    },
+    {
+      "name": "[HTML] - Color for ID value",
+      "foreground": "#A5FF90",
+      "font_style": 0,
+      "scope": "meta.toc-list.id.html"
+    },
+    {
+      "name": "[HTML] - Color for Entity Other",
+      "foreground": "#FAD000",
+      "font_style": 0,
+      "scope": "text.html.basic entity.other"
+    },
+    {
+      "name": "[HTML] - Color for Script Tag",
+      "foreground": "#FAD000",
+      "font_style": 0,
+      "scope": "meta.tag.metadata.script.html entity.name.tag.html"
+    },
+    {
+      "name": "[HTML] - Quotes. Different color to handle expanded selection",
+      "foreground": "#92FC79",
+      "font_style": 0,
+      "scope": "punctuation.definition.string.begin, punctuation.definition.string.end"
+    },
+    {
+      "name": "[HTML/PUG] Equals Sign",
+      "foreground": "#FF9D00",
+      "font_style": 0,
+      "scope": "meta.tag.inline.any.html, meta.tag.other"
+    },
+    {
+      "name": "[JSON] - Color for Support",
+      "foreground": "#FAD000",
+      "font_style": 0,
+      "scope": "source.json support"
+    },
+    {
+      "name": "[JSON] - Color for String",
+      "foreground": "#92FC79",
+      "font_style": 0,
+      "scope": "source.json string, source.json punctuation.definition.string"
+    },
+    {
+      "name": "[JAVASCRIPT] - Color for Storage Type Function",
+      "foreground": "#FB94FF",
+      "font_style": 0,
+      "scope": "source.js storage.type.function"
+    },
+    {
+      "name": "[JAVASCRIPT] - Color for Variable Language",
+      "foreground": "#FB94FF",
+      "font_style": 0,
+      "scope": "variable.language, entity.name.type.class.js"
+    },
+    {
+      "name": "[JAVASCRIPT] - Color for Inherited Component",
+      "foreground": "#FFEE80",
+      "font_style": 0,
+      "scope": "entity.other.inherited-class"
+    },
+    {
+      "name": "[JAVASCRIPT] - Color for React Extends keyword",
+      "foreground": "#FF9D00",
+      "font_style": 0,
+      "scope": "storage.type.extends.js, storage.type.class.jsdoc"
+    },
+    {
+      "name": "[JAVASCRIPT] — Docs Keywords",
+      "foreground": "#FF9D00",
+      "font_style": 0,
+      "scope": "punctuation.definition.block.tag.jsdoc"
+    },
+    {
+      "name": "[JAVASCRIPT] — Doc Var Types",
+      "foreground": "#9EFFFF",
+      "font_style": 0,
+      "scope": "variable.other.jsdoc, entity.name.type.instance.jsdoc"
+    },
+    {
+      "name": "[JAVASCRIPT] — Var Types",
+      "foreground": "#9EFFFF",
+      "font_style": 0,
+      "scope": "variable.other.constant"
+    },
+    {
+      "name": "[JAVASCRIPT REACT] — JSX HTML",
+      "foreground": "#9EFFFF",
+      "font_style": 0,
+      "scope": "punctuation.definition.tag.begin.js, punctuation.definition.tag.end.js"
+    },
+    {
+      "name": "[JAVASCRIPT REACT] — JSX HTML Children Text",
+      "foreground": "#FFFFFF",
+      "font_style": 0,
+      "scope": "meta.jsx.children.js"
+    },
+    {
+      "name": "[JAVASCRIPT] — Storage types",
+      "foreground": "#FF9D00",
+      "font_style": 0,
+      "scope": "storage.type, storage.type.class, storage.modifier, keyword.control, keyword.operator"
+    },
+    {
+      "name": "[JAVASCRIPT] — Docs Useless stuff",
+      "foreground": "#494685",
+      "font_style": 0,
+      "scope": "punctuation.definition.bracket.curly"
+    },
+    {
+      "name": "Typescript React Assignment Operator",
+      "foreground": "#FF9D00",
+      "font_style": 0,
+      "scope": "keyword.operator.assignment.tsx, keyword.operator.assignment.jsx"
+    },
+    {
+      "name": "[JAVASCRIPT] Keyword Operator Assignment",
+      "foreground": "#FF9D00",
+      "font_style": 0,
+      "scope": "keyword.operator.assignment"
+    },
+    {
+      "name": "[JAVASCRIPT] Typescript/React Children",
+      "foreground": "#FFFFFF",
+      "font_style": 0,
+      "scope": "meta.jsx.children.tsx"
+    },
+    {
+      "name": "[JAVASCRIPT] - Object keys",
+      "foreground": "#80FFBB",
+      "font_style": 0,
+      "scope": "meta.object-literal.key.js"
+    },
+    {
+      "name": "Typescript/React Classnames and Modules",
+      "foreground": "#9EFFFF",
+      "font_style": 0,
+      "scope": "entity.name.type.class.tsx, entity.name.type.class.jsx, variable.other.readwrite.alias.tsx, variable.other.readwrite.tsx, variable.other.readwrite.alias.ts, variable.other.readwrite.alias.jsx, variable.other.readwrite.alias.js, variable.other.object.tsx, variable.other.object.jsx, variable.other.object, support.class.component.tsx, support.class.component.jsx, entity.name.type.tsx, entity.name.type.jsx, variable.other.readwrite, variable.other.object.js"
+    },
+    {
+      "name": "[JAVASCRIPT] - .something",
+      "foreground": "#FFEE80",
+      "font_style": 0,
+      "scope": "variable.other.property, variable.other.object.property"
+    },
+    {
+      "name": "[JAVASCRIPT] - Color for Text inside JSX",
+      "foreground": "#FFFFFF",
+      "font_style": 0,
+      "scope": "JSXNested"
+    },
+    {
+      "name": "[JAVASCRIPT] - Parameters",
+      "foreground": "#9EFFFF",
+      "font_style": 0,
+      "scope": "variable.parameter"
+    },
+    {
+      "name": "[PYTHON] - Color for Self Argument",
+      "foreground": "#9EFFFF",
+      "font_style": 0,
+      "scope": "variable.parameter.function.language.special.self.python"
+    },
+    {
+      "name": "[PYTHON] - Functions",
+      "foreground": "#FAD000",
+      "font_style": 0,
+      "scope": "meta.function-call.python, meta.function-call.generic.python, support.function.builtin.python"
+    },
+    {
+      "name": "[TYPESCRIPT] - Color for Entity Name Type",
+      "foreground": "#80FFBB",
+      "font_style": 0,
+      "scope": "source.ts entity.name.type"
+    },
+    {
+      "name": "[TYPESCRIPT] - Color for Keyword",
+      "foreground": "#FAD000",
+      "font_style": 0,
+      "scope": "source.ts keyword"
+    },
+    {
+      "name": "[TYPESCRIPT] - Color for Punctuation Parameters",
+      "foreground": "#E1EFFF",
+      "font_style": 0,
+      "scope": "source.ts punctuation.definition.parameters"
+    },
+    {
+      "name": "[TYPESCRIPT] - Color for Punctuation Arrow Parameters",
+      "foreground": "#FFEE80",
+      "font_style": 0,
+      "scope": "meta.arrow.ts punctuation.definition.parameters"
+    },
+    {
+      "name": "[TYPESCRIPT] - Color for Storage",
+      "foreground": "#9EFFFF",
+      "font_style": 0,
+      "scope": "source.ts storage"
+    },
+    {
+      "name": "[MARKDOWN] - Color for Heading Name Section",
+      "foreground": "#FAD000",
+      "font_style": "bold",
+      "scope": "entity.name.section.markdown, markup.heading.setext.1.markdown, markup.heading.setext.2.markdown"
+    },
+    {
+      "name": "[MARKDOWN] - Diff Code Inserted Block",
+      "foreground": "#8efa00",
+      "font_style": 0,
+      "scope": "markup.inserted.diff, punctuation.definition.inserted.diff"
+    },
+    {
+      "name": "[MARKDOWN] - Diff Deleted Code Block",
+      "foreground": "#F16E6B",
+      "font_style": 0,
+      "scope": "markup.deleted.diff, punctuation.definition.deleted.diff"
+    },
+    {
+      "name": "[MARKDOWN] - Diff Meta text",
+      "foreground": "#FFFFFF",
+      "font_style": 0,
+      "scope": "meta.embedded.block.diff"
+    },
+    {
+      "name": "[MARKDOWN] - Color for Paragraph",
+      "foreground": "#FFFFFF",
+      "font_style": 0,
+      "scope": "meta.paragraph.markdown"
+    },
+    {
+      "name": "[MARKDOWN] - Comment Punctuation",
+      "foreground": "#B362FF",
+      "font_style": 0,
+      "scope": "punctuation.definition.from-file.diff, meta.diff.header.from-file"
+    },
+    {
+      "name": "[MARKDOWN] - Color for Text inside inline code block `code`",
+      "foreground": "#A599E9",
+      "font_style": 0,
+      "scope": "markup.inline.raw.string.markdown"
+    },
+    {
+      "name": "[MARKDOWN] - Color for Quote Punctuation",
+      "foreground": "#FAD000",
+      "font_style": 0,
+      "scope": "beginning.punctuation.definition.quote.markdown"
+    },
+    {
+      "name": "[MARKDOWN] - Color for Quote Paragraph",
+      "foreground": "#A599E9",
+      "font_style": 0,
+      "scope": "markup.quote.markdown meta.paragraph.markdown, punctuation.definition.quote.begin.markdown"
+    },
+    {
+      "name": "[MARKDOWN] - Color for Separator",
+      "foreground": "#FAD000",
+      "font_style": 0,
+      "scope": "meta.separator.markdown"
+    },
+    {
+      "name": "[MARKDOWN] - Color for Emphasis Bold",
+      "font_style": "bold",
+      "scope": "markup.bold.markdown"
+    },
+    {
+      "name": "[MARKDOWN] - Color for Emphasis Italic",
+      "font_style": "italic",
+      "scope": "markup.italic.markdown"
+    },
+    {
+      "name": "[MARKDOWN] - Color for Lists",
+      "foreground": "#FAD000",
+      "font_style": 0,
+      "scope": "beginning.punctuation.definition.list.markdown, punctuation.definition.list.begin.markdown, markup.list.unnumbered.markdown"
+    },
+    {
+      "name": "[MARKDOWN] - Link/Image title string",
+      "foreground": "#A5FF90",
+      "font_style": "",
+      "scope": "string.other.link.description.title.markdown punctuation.definition.string.markdown, meta.link.inline.markdown string.other.link.description.title.markdown, string.other.link.description.title.markdown punctuation.definition.string.begin.markdown, string.other.link.description.title.markdown punctuation.definition.string.end.markdown, meta.image.inline.markdown string.other.link.description.title.markdown"
+    },
+    {
+      "name": "[MARKDOWN] - Color for Link Title",
+      "foreground": "#FAD000",
+      "font_style": "underline",
+      "scope": "meta.link.inline.markdown string.other.link.title.markdown, meta.link.reference.markdown string.other.link.title.markdown, meta.link.reference.def.markdown markup.underline.link.markdown"
+    },
+    {
+      "name": "[MARKDOWN] - Color for Link/Image Title",
+      "foreground": "#A599E9",
+      "font_style": 0,
+      "scope": "markup.underline.link.markdown, string.other.link.description.title.markdown"
+    },
+    {
+      "name": "[MARKDOWN] - Color for Inline Code",
+      "foreground": "#9EFFFF",
+      "font_style": 0,
+      "scope": "fenced_code.block.language, markup.inline.raw.markdown"
+    },
+    {
+      "name": "[MARKDOWN] - Color for Punctuation — Heading, `Code` and fenced ```code blocks```, **Bold**",
+      "foreground": "#494685",
+      "font_style": 0,
+      "scope": "punctuation.definition.markdown, punctuation.definition.raw.markdown, punctuation.definition.heading.markdown, punctuation.definition.bold.markdown, punctuation.definition.italic.markdown"
+    },
+    {
+      "name": "[MARKDOWN] - LINK Brackets",
+      "foreground": "#FAD000",
+      "font_style": 0,
+      "scope": "meta.link.inline.markdown punctuation.definition.string.begin.markdown, meta.link.inline.markdown punctuation.definition.string.end.markdown, meta.link.reference.markdown punctuation.definition.string.begin.markdown, meta.link.reference.markdown punctuation.definition.string.end.markdown, string.other.link.description.markdown"
+    },
+    {
+      "name": "[MARKDOWN] - IMG LINK Brackets",
+      "foreground": "#FF9D00",
+      "font_style": 0,
+      "scope": "meta.image.inline.markdown punctuation.definition.string.begin.markdown, meta.image.inline.markdown punctuation.definition.string.end.markdown, string.other.link.description.markdown"
+    },
+    {
+      "name": "[MARKDOWN] - LINK ALT URI",
+      "foreground": "#A599E9",
+      "font_style": 0,
+      "scope": "markup.underline.link.markdown, punctuation.definition.metadata.markdown, markup.underline.link.image.markdown, constant.other.reference.link.markdown, punctuation.definition.constant.markdown, punctuation.definition.constant.begin.markdown, punctuation.definition.constant.end.markdown"
+    },
+    {
+      "name": "[PUG] - Color for Entity Name",
+      "foreground": "#9EFFFF",
+      "font_style": 0,
+      "scope": "text.jade entity.name"
+    },
+    {
+      "name": "[PUG] - Types",
+      "foreground": "#FF9D00",
+      "font_style": 0,
+      "scope": "storage.type.function.pug"
+    },
+    {
+      "name": "[PUG] - Var Params",
+      "foreground": "#9EFFFF",
+      "font_style": 0,
+      "scope": "variable.parameter.function.js"
+    },
+    {
+      "name": "[PUG] - Imports",
+      "foreground": "#92FC79",
+      "font_style": 0,
+      "scope": "variable.control.import.include.pug"
+    },
+    {
+      "name": "[PUG] - Color for String Interpolated",
+      "foreground": "#FFEE80",
+      "font_style": 0,
+      "scope": "text.jade string.interpolated"
+    },
+    {
+      "name": "[C#] - Color for Annotations",
+      "foreground": "#9EFFFF",
+      "font_style": 0,
+      "scope": "storage.type.cs"
+    },
+    {
+      "name": "[C#] - Color for Properties",
+      "foreground": "#9EFFFF",
+      "font_style": 0,
+      "scope": "entity.name.variable.property.cs"
+    },
+    {
+      "name": "[C#] - Color for Storage modifiers",
+      "foreground": "#80FFBB",
+      "font_style": 0,
+      "scope": "storage.modifier.cs"
+    },
+    {
+      "name": "[PHP] - Color for Entity",
+      "foreground": "#9EFFFF",
+      "font_style": 0,
+      "scope": "source.php entity, variable.other.class.php"
+    },
+    {
+      "name": "[PHP] - Docs Keywords",
+      "foreground": "#FF9D00",
+      "font_style": 0,
+      "scope": "keyword.other.phpdoc.php"
+    },
+    {
+      "name": "[PHP] - Functions",
+      "foreground": "#FAD000",
+      "font_style": 0,
+      "scope": "entity.name.function.php, support.function.basic_functions.php, meta.function-call.php, variable.other.property"
+    },
+    {
+      "name": "[PHP] - Variables",
+      "foreground": "#9EFFFF",
+      "font_style": 0,
+      "scope": "variable.other.php, punctuation.definition.variable.php, variable.other.global.php, variable.language.this.php"
+    },
+    {
+      "name": "[PHP] - Color for Storage Modifiers",
+      "foreground": "#FF9D00",
+      "font_style": 0,
+      "scope": "storage.modifier.php, keyword.other.namespace.php"
+    },
+    {
+      "name": "[YML] — KEYWORDS",
+      "foreground": "#FAD000",
+      "font_style": 0,
+      "scope": "entity.name.tag.yaml"
+    },
+    {
+      "name": "[YML] — Punctuation",
+      "foreground": "#E1EFFF",
+      "font_style": 0,
+      "scope": "punctuation.definition.block.sequence.item.yaml"
+    },
+    {
+      "name": "[PHP] - Keywords for definition",
+      "foreground": "#FB94FF",
+      "font_style": 0,
+      "scope": "storage.type.function.php, meta.function.parameters.php"
+    },
+    {
+      "name": "[PHP Blade] - Keywords for definition",
+      "foreground": "#FF9D00",
+      "font_style": 0,
+      "scope": "keyword.blade"
+    },
+    {
+      "name": "[PHP Blade] - Punctuation",
+      "foreground": "#E1EFFF",
+      "font_style": 0,
+      "scope": "begin.bracket.round.blade.php, end.bracket.round.blade.php"
+    },
+    {
+      "name": "[PHP Blade] - Construct",
+      "foreground": "#FFEE80",
+      "font_style": 0,
+      "scope": "support.function.construct.begin.blade, support.function.construct.end.blade"
+    },
+    {
+      "name": "[GO] - Keywords for definition",
+      "foreground": "#FF9D00",
+      "font_style": 0,
+      "scope": "keyword.package.go, keyword.import.go"
+    },
+    {
+      "name": "[GO] - Functions",
+      "foreground": "#FB94FF",
+      "font_style": 0,
+      "scope": "keyword.function.go"
+    },
+    {
+      "name": "[GO] - Variables",
+      "foreground": "#9EFFFF",
+      "font_style": 0,
+      "scope": "variable.other.assignment.go"
+    },
+    {
+      "name": "[GO] - Punctuation",
+      "foreground": "#FAD000",
+      "font_style": 0,
+      "scope": "punctuation.definition.string.begin.go, punctuation.definition.string.end.go, support.function.go"
+    },
+    {
+      "name": "[RUBY] - Interpolation Quoted Double & Block Inline",
+      "foreground": "#FFEE80",
+      "font_style": 0,
+      "scope": "punctuation.section.embedded.end.ruby, punctuation.section.embedded.begin.ruby, punctuation.section.scope.begin.ruby, punctuation.section.scope.end.ruby"
+    },
+    {
+      "name": "[RUBY] - Constant",
+      "foreground": "#80FFBB",
+      "font_style": 0,
+      "scope": "variable.other.constant.ruby"
+    },
+    {
+      "name": "[RUBY] - Class",
+      "foreground": "#FB94FF",
+      "font_style": 0,
+      "scope": "entity.name.type.class.ruby"
+    },
+    {
+      "name": "[RUBY] - Variables",
+      "foreground": "#9EFFFF",
+      "font_style": 0,
+      "scope": "variable.other.block.ruby, variable.other.ruby"
+    },
+    {
+      "name": "[RUBY] - Separators",
+      "foreground": "#FF9D00",
+      "font_style": 0,
+      "scope": "punctuation.separator.other.ruby"
+    },
+    {
+      "name": "[RUBY] - Special Methods",
+      "foreground": "#FFEE80",
+      "font_style": 0,
+      "scope": "keyword.other.special-method.ruby"
+    },
+    {
+      "name": "[SHELL] - Function Keyword",
+      "foreground": "#FB94FF",
+      "font_style": 0,
+      "scope": "storage.type.function.shell"
+    },
+    {
+      "name": "[SHELL] - Var Other",
+      "foreground": "#FF9D00",
+      "font_style": 0,
+      "scope": "variable.other.special.shell, punctuation.definition.variable.shell"
+    },
+    {
+      "name": "[GRAPHQL] — Variable",
+      "foreground": "#FAEFA5",
+      "font_style": 0,
+      "scope": "variable.graphql"
+    },
+    {
+      "name": "[GRAPHQL] — Keywords",
+      "foreground": "#FB94FF",
+      "font_style": 0,
+      "scope": "keyword.operation.graphql"
+    },
+    {
+      "name": "[SQL] Source",
+      "foreground": "#E1EFFF",
+      "font_style": 0,
+      "scope": "source.sql"
+    },
+    {
+      "name": "[SQL] — Keywords",
+      "foreground": "#FAEFA5",
+      "font_style": 0,
+      "scope": "source.sql keyword.other, support.function.mysqli.php"
+    },
+    {
+      "name": "[SQL] — Functions Used",
+      "foreground": "#FAD000",
+      "font_style": 0,
+      "scope": "support.function.mysqli.php, source.sql support.function"
+    },
+    {
+      "name": "[SQL] — RegExp String",
+      "foreground": "#E1EFFF",
+      "font_style": 0,
+      "scope": "string.regexp, string.regexp keyword.other"
+    },
+    {
+      "name": "[SQL] — Other keywords",
+      "foreground": "#FF9D00",
+      "font_style": 0,
+      "scope": "keyword.other.DML.sql"
+    },
+    {
+      "name": "[TOML] — SYNTAX",
+      "foreground": "#E1EFFF",
+      "font_style": 0,
+      "scope": "punctuation.definition.table.array.toml"
+    },
+    {
+      "name": "[TOML] — Other keywords",
+      "foreground": "#FF9D00",
+      "font_style": 0,
+      "scope": "entity.other.attribute-name.table.array.toml, entity.other.attribute-name.table.toml"
+    },
+    {
+      "name": "[TOML] — Keywords",
+      "foreground": "#FAD000",
+      "font_style": 0,
+      "scope": "keyword.key.toml"
+    },
+    {
+      "name": "[DOCKER] — Keywords",
+      "foreground": "#FAD000",
+      "font_style": 0,
+      "scope": "keyword.other.special-method.dockerfile"
+    },
+    {
+      "name": "[RUST] — Keywords",
+      "foreground": "#FF9D00",
+      "font_style": 0,
+      "scope": "keyword.other.rust"
+    },
+    {
+      "name": "[RUST] — Keyword Fn",
+      "foreground": "#FB94FF",
+      "font_style": 0,
+      "scope": "keyword.other.fn.rust"
+    },
+    {
+      "name": "[ENV] — Keyword",
+      "foreground": "#FF9D00",
+      "font_style": 0,
+      "scope": "keyword.other.env"
+    },
+    {
+      "name": "[ENV] — Variable",
+      "foreground": "#FAD000",
+      "font_style": 0,
+      "scope": "variable.other.env"
+    },
+    {
+      "name": "[ENV] — Source",
+      "foreground": "#E1EFFF",
+      "font_style": 0,
+      "scope": "source.env"
+    },
+    {
+      "name": "[ENV] — Punctuation",
+      "foreground": "#FF9D00",
+      "font_style": 0,
+      "scope": "keyword.other.template.begin.env, keyword.other.template.end.env, keyword.operator.assignment.env"
+    },
+    {
+      "name": "[JS] — Double Destructure of Object",
+      "foreground": "#9EFFFF",
+      "font_style": 0,
+      "scope": "variable.object.property"
+    },
+    {
+      "name": "[JS] — Regex",
+      "foreground": "#FB94FF",
+      "font_style": 0,
+      "scope": "string.regexp.js"
+    },
+    {
+      "name": "[CSV] — Keyword 2",
+      "foreground": "#FF9D00",
+      "font_style": 0,
+      "scope": "keyword.rainbow2"
+    },
+    {
+      "name": "Deleted",
+      "foreground": "#F16E6B",
+      "font_style": 0,
+      "scope": "markup.deleted"
+    },
+    {
+      "name": "Inserted",
+      "foreground": "#8efa00",
+      "font_style": 0,
+      "scope": "markup.inserted"
+    },
+    {
+      "name": "Underline",
+      "font_style": "underline",
+      "scope": "markup.underline"
+    },
+    {
+      "name": "[ITALICS] All the awesome italics live here.",
+      "font_style": "italic",
+      "scope": "modifier, this, comment, storage.modifier, entity.other.attribute-name, entity.other.attribute-name.html, punctuation.definition.comment, text.html.basic entity.other, entity.other.attribute-name, markup.quote.markdown meta.paragraph.markdown, markup.italic.markdown, text.jade entity.other.attribute-name.tag, keyword.control.from, entity.other.attribute-name.tag.pug"
+    }
+  ]
+}

@@ -29,8 +29,10 @@ brew:
     - jesseduffield/lazygit/lazygit
   casks:
     - wezterm
-    - sublime-merge
+    # - sublime-merge
     - sublime-text
+    - gitkraken
+    - visual-studio-code
     # - hiddenbar
     # - kdiff3
     # - multipass
@@ -111,6 +113,9 @@ brew:
       
       - mas
       - ruby
+
+      - syncthing
+      - tailscale
       # - xz
       # - carlocab/personal/unrar
       # - dockutil
@@ -128,14 +133,30 @@ brew:
 
 snaps: 
   pkgs: 
-    - vivaldi
+    # - vivaldi
     - proton-pass
   classics:
     - code
 
-dotfiles:
-  repo: 'https://github.com/qubus79/dotfiles'
-  branch: 'main'
+# dotfiles:
+#   repo: 'https://github.com/qubus79/dotfiles'
+#   branch: 'main'
+
+
+
+dotfiles_base_dir: "{{ ansible_env.HOME }}/.dotfiles"
+dotfiles_dir: "{{ dotfiles_base_dir }}/dotfiles/stow"
+stow_dirs:
+    - btop
+    - nvim
+    - wezterm
+    - code
+    - git
+    - zsh
+    - tmux
+    - powerlevel10k
+#    - kitty
+    - sublime_text-mac
 
 # nodejs:
 #   packages:

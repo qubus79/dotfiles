@@ -51,30 +51,3 @@ important features of chezmoi:
 
 The biggest driver for choosing chezmoi was my intention to follow single
 responsibility principle: dotfiles should be managed separately.
-
-## Why LunarVim?
-
-I used regular Vim for a couple of years until it has become really painful to
-manage a 500+ lines file. I've made an attempt to switch to Neovim after
-watching Vimconf hosted by [ThePrimagen](https://github.com/ThePrimeagen) and
-[TJ DeVries](https://github.com/tjdevries). This switch made me realize I don't
-understand half of the Lua configuration.
-
-Luckily, it turned out that most of the keymaps, plugins and sane defaults I was
-trying to configure are not necessarily specific and lots of people tend to
-configure Neovim this way. In fact,
-[LunarVim](https://github.com/LunarVim/LunarVim) does this pretty well by
-providing a community driven framework for Neovim that acts like a wrapper with
-a bunch of common plugins. I happen to enjoy most of the stuff they ship out of
-the box. As an experienced Vim user, I found I only needed to install a couple
-more plugins to feel comfortable, rebind a couple of keys and configure less
-than 10 options.
-
-## Why Fish?
-
-Fish ecosystem is great for interactive shells. I still write day-to-day scripts
-in pure bash, but the amount of features that comes preconfigured with fish is just
-too good to resist.
-
-!!! warning
-    Fish is not POSIX compatible shell.

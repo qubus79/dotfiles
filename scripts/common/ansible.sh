@@ -3,7 +3,7 @@
 set -euoE pipefail
 
 # shellcheck disable=SC2086
-cwd="$(cd "$(dirname ${BASH_SOURCE[0]})" && pwd)"
+cwd="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 sudo_required() { sudo -n true 2>/dev/null || return 0; }
 

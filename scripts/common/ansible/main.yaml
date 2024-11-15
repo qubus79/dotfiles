@@ -2,6 +2,8 @@
 - hosts: 127.0.0.1
   strategy: linear
   connection: local
+  become: yes
+  gather_facts: yes
 
   vars_files:
     - config.yaml
@@ -13,11 +15,8 @@
     - name: fonts
       tags: fonts
 
-    # - name: dotfiles
-    #   tags: dotfiles
-
-    # - name: fish
-    #   tags: fish
+    - name: zsh
+      tags: zsh
 
     - name: neovim
       tags: neovim
@@ -25,17 +24,8 @@
     - name: tmux
       tags: tmux
 
-    # - name: lunarvim
-    #   tags: lunarvim
-
-    # - name: asdf
-    #   tags: asdf
-
-    # - name: go
-    #   tags: go
-
-    # - name: docker
-    #   tags: docker
+    - name: stow_dotfiles
+      tags: stow
 
     # - name: system_defaults
     #   tags: system_defaults

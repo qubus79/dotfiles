@@ -1,0 +1,39 @@
+---
+# Sprawdzenie, czy `stow` jest zainstalowane
+- name: Check if stow is installed
+  command: which stow
+  register: stow_installed
+  changed_when: no
+  failed_when: stow_installed.rc not in [0, 1]
+
+# Instalacja stow na macOS
+- name: Ensure stow is installed on macOS using Homebrew
+  homebrew:
+    name: stow
+    state: present
+  when: ansible_os_family == "Darwin" and stow_installed.rc != 0
+
+# Instalacja stow na Debian/Ubuntu
+- name: Install stow on Debian/Ubuntu
+  apt:
+    name: stow
+    state: present
+    update_cache: yes
+  when: ansible_os_family == "Debian" and stow_installed.rc != 0
+
+# Skopiowanie skryptu stow jako szablon
+- name: Copy stow script template
+  template:
+    src: templates/stow_script.sh.j2
+    dest: "{{ dotfiles_base_dir }}/stow_script.sh"
+    mode: '0755'
+
+# Restowing dotfiles
+- name: Restow dotfiles
+  shell: "bash {{ dotfiles_base_dir }}/stow_script.sh"
+  args:
+    executable: /bin/bash
+  environment:
+    HOME: "{{ ansible_env.HOME }}"
+  when: stow_installed.rc == 0
+  tags: stow

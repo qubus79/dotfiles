@@ -1,0 +1,51 @@
+---
+- name: Install dependencies on Debian/Ubuntu
+  apt:
+    name:
+      - curl
+      - wget
+      - git
+      - zsh
+    state: present
+    update_cache: yes
+  when: ansible_os_family == "Debian"
+
+- name: Install dependencies on macOS using Homebrew
+  homebrew:
+    name:
+      - curl
+      - wget
+      - git
+      - zsh
+    state: present
+  when: ansible_os_family == "Darwin"
+
+- name: Change default shell to zsh (Linux only)
+  command: chsh -s $(which zsh)
+  args:
+    executable: /bin/bash
+  when: ansible_os_family == "Debian" and ansible_env.SHELL != "/bin/zsh"
+
+- name: Install Oh My Zsh
+  shell: |
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+  args:
+    creates: ~/.oh-my-zsh
+
+- name: Install PowerLevel10k theme
+  git:
+    repo: "https://github.com/romkatv/powerlevel10k.git"
+    dest: "{{ ansible_env.HOME }}/.oh-my-zsh/custom/themes/powerlevel10k"
+    depth: 1
+
+- name: Install zsh-autosuggestions plugin
+  git:
+    repo: "https://github.com/zsh-users/zsh-autosuggestions.git"
+    dest: "{{ ansible_env.HOME }}/.oh-my-zsh/custom/plugins/zsh-autosuggestions"
+    depth: 1
+
+- name: Install zsh-syntax-highlighting plugin
+  git:
+    repo: "https://github.com/zsh-users/zsh-syntax-highlighting.git"
+    dest: "{{ ansible_env.HOME }}/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting"
+    depth: 1

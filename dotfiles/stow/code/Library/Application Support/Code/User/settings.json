@@ -1,0 +1,50 @@
+{
+  "[python]": {
+    "editor.formatOnType": true
+  },
+  "editor.accessibilitySupport": "off",
+  "editor.bracketPairColorization.enabled": true,
+  "editor.fontFamily": "JetBrains Mono, FiraCode Nerd Font, Cascadia Code, Menlo, Monaco, 'Courier New', monospace, MensloLGS NF, FiraCode Nerd Font, Cascadia Code",
+  "editor.fontLigatures": true,
+  "editor.fontSize": 15,
+  "editor.guides.bracketPairs": true,
+  "git.autofetch": true,
+  "gitlens.hovers.currentLine.over": "line",
+  "terminal.integrated.env.osx": {
+    "Q_NEW_SESSION": "1"
+  },
+  "terminal.integrated.fontFamily": "JetBrains Mono, FiraCode Nerd Font, MesloLGS NF, monospace",
+  "terminal.integrated.fontSize": 15,
+  "terminal.integrated.inheritEnv": false,
+  "workbench.colorTheme": "Shades of Purple",
+  "workbench.settings.applyToAllProfiles": [
+    "editor.fontFamily",
+    "workbench.colorCustomizations"
+  ],
+  "workbench.iconTheme": "vscode-icons",
+  "terminal.external.osxExec": "WezTerm.app",
+  "terminal.integrated.defaultProfile.osx": "zsh",
+  "workbench.startupEditor": "none",
+  "lldb.library": "/Library/Developer/CommandLineTools/Library/PrivateFrameworks/LLDB.framework/Versions/A/LLDB",
+  "lldb.launch.expressions": "native",
+
+  "editor.cursorBlinking": "phase",
+  "editor.cursorSmoothCaretAnimation": "on",
+  "editor.lineNumbers": "relative",
+
+
+  "apc.electron": {
+    "opacity": 0.95,  // Range: 0-1 (To go fully transparent, set it to 0)
+    "transparent": true,
+  //   "backgroundColor": "#00000000",
+    "vibrancy": "ultra-dark",
+  //   // "frame": false,
+  //   "titleBarStyle": "hiddenInset",
+    "visualEffectState": "active"
+  },
+  // "apc.imports": [],
+  // "apc.stylesheet": {
+  //   ".monaco-editor .cursor": "background: #ffffffaa !important; box-shadow: 0 0 70px 5px #ffffff, #ffffff 0px 0px 34px 1px; color: [#161616](https://github.com/AlexOwl/vscode-transparent-color-theme/issues/161616) !important",
+  // },
+  
+}

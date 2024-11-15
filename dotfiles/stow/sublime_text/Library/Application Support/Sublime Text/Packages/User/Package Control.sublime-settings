@@ -1,0 +1,16 @@
+{
+	"bootstrapped": true,
+	"in_process_packages":
+	[
+	],
+	"installed_packages":
+	[
+		"ABNF-sublime-syntax",
+		"Git",
+		"Markdown Extended",
+		"MarkdownLivePreview",
+		"Package Control",
+		"SideBarEnhancements",
+		"SublimeGit",
+	],
+}

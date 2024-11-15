@@ -8,12 +8,20 @@ Fully automated development environment. Read the full documentation
 
 ## Installation
 
-Install everything with single `curl` command:
+Install everything with single `git clone` command:
 
-```bash
+```shell
+git clone https://github.com/qubus79/dotfiles.git ~/.dotfiles && bash ~/.dotfiles/setup.sh --all
+```
+
+You can remove existing ~/.dotfiles folder and `git clone` it from Github again with:
+
+```shell
 git clone https://github.com/qubus79/dotfiles
 /dotfiles/scripts/setup.sh --all
+```
 
+```shell
 TO NIE DZIAŁA - do zmiany 
 curl -fsSL https://github.com/qubus79/dotfiles/scripts/setup.sh | sh -s -- --all
 ```
@@ -38,16 +46,24 @@ GitHub Actions or build your own:
 │
 │
 │     ┌─────────────────────────────────────┐
-├───► │git clone shmileee/dotfiles.git /tmp │
+├───► │git clone qubus79/dotfiles.git /tmp  │
 │     └─────────────────────────────────────┘
+│
+│
+│     ┌──────────────────┐
+├───► │./install_brew.sh │
+│     └──────────────────┘
+│
 │
 │     ┌─────────────────────────┐     ┌──────────────────────────┐
 ├───► │./install_dependencies.sh├────►│ apt install <essentials> │
 │     └─────────────────────────┘     └──────────────────────────┘
 │
-│     ┌──────────────────┐
-├───► │./install_brew.sh │
-│     └──────────────────┘
+
+│     ┌──────────────────────┐
+├───► │./add_repositories.sh │
+│     └──────────────────────┘
+│
 │
 │     ┌────────────┐
 └───► │./ansible.sh│
@@ -64,7 +80,6 @@ GitHub Actions or build your own:
    ├─►│ sudo is not passwordless │
    │  └──────────────────────────┘
    │
-   │
    │  ┌───────────────────────────────┐
    └─►│ansible-playbook ... main.yaml │
       └───────────────┬───────────────┘
@@ -73,56 +88,32 @@ GitHub Actions or build your own:
      │                 ┌────────────────────────┐
      │  ┌──────┐       │ brew install <packages>│
      ├─►│common├──────►│ brew install <casks>   │
-     │  └──────┘       └────────────────────────┘
-     │
+     │  └──────┘       │ apt install <packages> │
+     │                 └────────────────────────┘
      │  ┌───────┐
-     ├─►│ fonts │
-     │  └───────┘
-     │                 ┌───────────────┐
-     │  ┌──────────┐   │ chezmoi init  │
-     ├─►│ dotfiles ├──►│ chezmoi update│
-     │  └──────────┘   └───────────────┘
-     │
-     │
-     │
-     │  ┌────┐         ┌────────────────────┐
-     ├─►│fish├───────┐ │change default shell│
-     │  └────┘       └►│install fisher      │
-     │                 │install fish plugins│
-     │                 └────────────────────┘
-     │
-     │
-     │                 ┌──────────────────────┐
-     │  ┌──────┐       │ either:              │
-     ├─►│neovim├──────►│  - build from source │
-     │  └──────┘       │  - install binary    │
-     │                 └──────────────────────┘
-     │
-     │
-     │                 ┌───────────────────────────┐
-     │  ┌────────┐     │ download                  │
-     ├─►│lunarvim├────►│ install                   │
-     │  └────────┘     │ update config with chezmoi│
-     │                 └───────────────────────────┘
-     │
-     │
-     │                 ┌────────────────────┐
-     │  ┌────┐         │ install plugins    │
-     ├─►│asdf├────────►│ install tools      │
-     │  └────┘         │ set global versions│
-     │                 └────────────────────┘
-     │
-     │  ┌────┐         ┌────────────────────┐
-     ├─►│ go ├────────►│ install go packages│
-     │  └────┘         └────────────────────┘
-     │
-     │  ┌────────┐
-     ├─►│ docker │
-     │  └────────┘     ┌──────────────────────┐
-     │                 │install plugin manager│
-     │  ┌──────┐    ┌─►│install plugins       │
-     ├─►│ tmux ├────┘  └──────────────────────┘
-     │  └──────┘
+     ├─►│ fonts │      ┌─────────────────────┐
+     │  └───────┘      │change default shell │
+     │              ┌─►│install .ohmyzsh     │
+     │  ┌─────┐     │  │install powerlevel10k│
+     ├─►│ zsh ├─────┘  │install zsh plugins  │
+     │  └─────┘        └─────────────────────┘
+     │                 
+     │  ┌──────┐       ┌──────────────────────┐
+     ├─►│neovim├─────┐ │ either:              │
+     │  └──────┘     └►│  - build from source │
+     │                 │  - install binary    │
+     │  ┌──────┐       └──────────────────────┘
+     ├─►│ tmux ├─────┐ 
+     │  └──────┘     │ ┌──────────────────────┐
+     │               └►│install plugin manager│  
+     │  ┌──────────┐   │install plugins       │   
+     ├─►│ dotfiles ├─┐ └──────────────────────┘
+     │  └──────────┘ │ 
+     │               │ ┌─────────────────────────┐
+     │               │ │ prepare .dotfiles folder│
+                     └►│ `stow`.dotfiles         │
+    ...                └─────────────────────────┘
+     
      │
      │  ┌─────────────────┐
      └─►│ system_defaults │
@@ -145,5 +136,7 @@ GitHub Actions or build your own:
 ```
 
 ## Credits
+
+This repository is hugely inspired by [shmileee dotfiles](https://github.com/shmileee/dotfiles) repository.
 
 Many thanks to the [dotfiles community](https://dotfiles.github.io).
