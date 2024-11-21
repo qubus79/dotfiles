@@ -9,7 +9,8 @@
         - font-meslo-lg-nerd-font
         - font-fira-code-nerd-font
         - font-symbols-only-nerd-font
-        - font-jetbrains-mono
+        # - font-jetbrains-mono
+        - font-jetbrains-mono-nerd-font
       install_options: no-quarantine
       accept_external_apps: true
 
