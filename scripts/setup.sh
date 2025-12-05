@@ -19,7 +19,7 @@ branch="${branch:-main}"
 tarball="$source/tarball/$branch"
 # Docelowy katalog, w którym tymczasowo umieszczane jest repo ansible/dotfiles.
 # Dzięki przeniesieniu go do ~/Developer można go łatwo usunąć po zakończeniu instalacji.
-target="$HOME/Developer/dotfiles_ansible"
+target="$HOME/dotfiles"
 tar_cmd="tar -xzv -C $target --strip-components=1 --exclude='{.gitignore}'"
 
 

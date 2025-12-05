@@ -11,7 +11,7 @@ Fully automated development environment. Read the full documentation
 Install everything with single `git clone` command:
 
 ```shell
-git clone https://github.com/qubus79/dotfiles.git ~/.dotfiles && bash ~/.dotfiles/setup.sh --all
+git clone https://github.com/qubus79/dotfiles.git ~/dotfiles && bash ~/dotfiles/setup.sh --all
 ```
 
 You can remove existing ~/.dotfiles folder and `git clone` it from Github again with:
