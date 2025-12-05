@@ -1,4 +1,12 @@
 ---
+# Upewnij się, że główne repo dotfiles (qubus79/dotfiles) jest sklonowane do ~/.dotfiles
+- name: Ensure main dotfiles repo is present in ~/.dotfiles
+  git:
+    repo: "https://github.com/qubus79/dotfiles.git"
+    dest: "{{ dotfiles_base_dir }}"
+    version: main
+    update: yes
+
 # Sprawdzenie, czy `stow` jest zainstalowane
 - name: Check if stow is installed
   command: which stow
@@ -21,19 +29,25 @@
     update_cache: yes
   when: ansible_os_family == "Debian" and stow_installed.rc != 0
 
-# Skopiowanie skryptu stow jako szablon
-- name: Copy stow script template
+# Ensure internal stow directory exists
+- name: Ensure internal stow directory exists
+  file:
+    path: "{{ dotfiles_base_dir }}/.ansible_internal"
+    state: directory
+    mode: '0755'
+
+# Copy stow script template into internal subdirectory
+- name: Copy stow script template into internal subdirectory
   template:
     src: templates/stow_script.sh.j2
-    dest: "{{ dotfiles_base_dir }}/stow_script.sh"
+    dest: "{{ dotfiles_base_dir }}/.ansible_internal/stow_script.sh"
     mode: '0755'
 
 # Restowing dotfiles
 - name: Restow dotfiles
-  shell: "bash {{ dotfiles_base_dir }}/stow_script.sh"
+  shell: "bash {{ dotfiles_base_dir }}/.ansible_internal/stow_script.sh"
   args:
     executable: /bin/bash
   environment:
     HOME: "{{ ansible_env.HOME }}"
-  when: stow_installed.rc == 0
   tags: stow

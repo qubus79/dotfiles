@@ -1,9 +1,16 @@
 #!/bin/bash
 
-OS=$(uname)
-DOTFILES_DIR="{{ dotfiles_dir }}"
-echo "Dotfiles directory: $DOTFILES_DIR"
+# Ten skrypt:
+# - działa na głównym repo dotfiles znajdującym się w ~/.dotfiles,
+# - używa katalogów (STOW_DIRS) bezpośrednio z tego repo (np. zsh, nvim, itp.),
+# - służy do odświeżania symlinków w $HOME i odpowiednich katalogach aplikacji (Sublime, VS Code).
 
+OS=$(uname)
+
+# dotfiles_dir powinno wskazywać na katalog ~/.dotfiles, który jest klonem repo qubus79/dotfiles
+DOTFILES_DIR="{{ dotfiles_dir }}"
+
+# Nazwy katalogów w ~/.dotfiles, które będą stowowane (np. zsh, nvim, git, itp.)
 STOW_DIRS="{{ stow_dirs | join(' ') }}"
 
 # Pytanie użytkownika o wybranie opcji
@@ -26,7 +33,8 @@ fi
 
 echo "Stowing dotfiles using option: $STOW_OPTION"
 
-# Wykonanie stow dla każdego katalogu
+# Pętla przechodzi po wszystkich katalogach dotfiles i uruchamia stow z odpowiednim --target
+# w zależności od systemu (macOS vs Linux) i specjalnych przypadków (sublime_text, code).
 for dir in $STOW_DIRS; do
   if [[ "$OS" == "Darwin" ]]; then
     if [[ "$dir" == "sublime_text" ]]; then

@@ -144,8 +144,12 @@ snaps:
 
 
 
+# Główne repo dotfiles (https://github.com/qubus79/dotfiles) klonowane jest do ~/.dotfiles
 dotfiles_base_dir: "{{ ansible_env.HOME }}/.dotfiles"
-dotfiles_dir: "{{ dotfiles_base_dir }}/dotfiles/stow"
+# Stow ma działać bezpośrednio na katalogach w ~/.dotfiles (zsh, nvim, git, itp.),
+# dlatego dotfiles_dir wskazuje na ten sam katalog bazowy.
+dotfiles_dir: "{{ dotfiles_base_dir }}"
+# Katalogi w ~/.dotfiles, które mają być stowowane (muszą istnieć w tym repo)
 stow_dirs:
     - btop
     - nvim
