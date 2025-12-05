@@ -27,7 +27,7 @@ brew:
     # - carlocab/personal
     #- homebrew/bundle
 # nvim
-    - jesseduffield/lazygit/lazygit
+    # - jesseduffield/lazygit/lazygit
   casks:
     - wezterm
     - gitkraken
