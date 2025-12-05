@@ -5,8 +5,6 @@ set -euoE pipefail
 # shellcheck disable=SC2086
 cwd="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
-sudo_required() { sudo -n true 2>/dev/null || return 0; }
-
 install_collections() {
   echo "🚀 [ansible] installing collections..."
   ansible-galaxy collection install community.general
@@ -15,8 +13,12 @@ install_collections() {
 run_playbook() {
   echo "🚀 [ansible] running playbook..."
   local playbook_opts=()
+  local uname_s
+  uname_s="$(uname -s)"
 
-  if sudo_required; then
+  # Na macOS nie używamy sudo/become (Homebrew nie może być uruchamiany jako root),
+  # na Linuxie i innych systemach prosimy o hasło sudo przez --ask-become-pass.
+  if [[ "$uname_s" != "Darwin" ]]; then
     playbook_opts+=("--ask-become-pass")
   fi
 
