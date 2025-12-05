@@ -12,20 +12,25 @@ install_collections() {
 
 run_playbook() {
   echo "🚀 [ansible] running playbook..."
-  local playbook_opts=()
+  local playbook_opts=""
   local uname_s
   uname_s="$(uname -s)"
 
   # Na macOS nie używamy sudo/become (Homebrew nie może być uruchamiany jako root),
   # na Linuxie i innych systemach prosimy o hasło sudo przez --ask-become-pass.
   if [[ "$uname_s" != "Darwin" ]]; then
-    playbook_opts+=("--ask-become-pass")
+    playbook_opts="--ask-become-pass"
   fi
 
   export ANSIBLE_CONFIG="${cwd}/ansible/ansible.cfg"
 
-  echo "ansible-playbook -e ansible_user=$(whoami) ${cwd}/ansible/main.yaml -v ${playbook_opts[*]}"
-  ansible-playbook -e "ansible_user=$(whoami)" "${cwd}/ansible/main.yaml" -v "${playbook_opts[*]}"
+  echo "🔧 [ansible] używam ANSIBLE_CONFIG=${ANSIBLE_CONFIG}"
+  echo "📂 [ansible] playbook: ${cwd}/ansible/main.yaml"
+  echo "👤 [ansible] użytkownik: $(whoami)"
+  echo "⚙️  [ansible] dodatkowe opcje: ${playbook_opts}"
+
+  echo "ansible-playbook -e ansible_user=$(whoami) ${cwd}/ansible/main.yaml -vv ${playbook_opts}"
+  ansible-playbook -e "ansible_user=$(whoami)" "${cwd}/ansible/main.yaml" -vv ${playbook_opts}
   echo "✅ [ansible] configured!"
 }
 
