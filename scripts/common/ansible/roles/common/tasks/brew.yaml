@@ -23,20 +23,16 @@
     update_homebrew: true
   failed_when: false
 
-- name: "▶️ [brew] Start: installing taps"
-  ansible.builtin.debug:
-    msg: "Instaluję tapy: {{ brew.taps | default('brak tapów') }}"
-  when:
-    - brew.taps is defined
-    - brew.taps | length > 0
+# - name: "▶️ [brew] Start: installing taps"
+#   ansible.builtin.debug:
+#     msg: "Instaluję tapy: {{ brew.taps | default('brak tapów') }}"
+#   when: brew.taps is defined
 
-- name: "brew | install taps"
-  community.general.homebrew_tap:
-    name: "{{ brew.taps }}"
-    state: present
-  when:
-    - brew.taps is defined
-    - brew.taps | length > 0
+# - name: "brew | install taps"
+#   community.general.homebrew_tap:
+#     name: "{{ brew.taps }}"
+#     state: present
+#   when: brew.taps is defined
 
 - name: "▶️ [brew] Start: installing casks"
   ansible.builtin.debug:
