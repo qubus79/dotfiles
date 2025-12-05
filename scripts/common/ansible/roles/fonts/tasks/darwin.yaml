@@ -15,8 +15,7 @@
         - font-symbols-only-nerd-font
         # - font-jetbrains-mono
         - font-jetbrains-mono-nerd-font
-      install_options: no-quarantine
-      accept_external_apps: true
+    failed_when: false
 
   tags:
     - font_install
