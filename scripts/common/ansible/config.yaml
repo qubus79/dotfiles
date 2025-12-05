@@ -19,6 +19,7 @@ packages:
     - stow
     - fastfetch
     - flatpak
+    - ice # bartender alternative
 
 brew:
   taps:
@@ -29,19 +30,57 @@ brew:
     - jesseduffield/lazygit/lazygit
   casks:
     - wezterm
-    # - sublime-merge
-    - sublime-text
     - gitkraken
     - visual-studio-code
     # - hiddenbar
     # - kdiff3
     # - multipass
     # - rectangle
-    # - 1password
     # - alacritty
     # - alt-tab
     # - aws-vault
     # - brave-browser
+    - balenaetcher
+    - calibre
+    - craft
+    - fantastical
+    - github
+    - aerial
+    - istat-menus
+    - missive
+    - notion
+    - proton-drive
+    - proton-pass
+    - raindropio
+    - raycast
+    - rustdesk
+    # - mountain-duck
+    # - cyberduck
+    - todoist-app
+    - vlc
+    - icollections
+    - image2icon
+    - affinity
+    - sublime-merge
+    - sublime-text
+    - whatsapp
+    - sf-symbols
+    - termius
+    - zen
+    - obsidian
+    - airtable
+    - chatgpt
+    - datagrip
+    - the-unarchiver
+    - send-to-kindle
+    - pulsar
+    - home-assistant
+    - zoom
+    - ente-auth
+    - 1password
+    - plex
+    - google-drive
+    - cleanmymac
 
   packages:
     common:
@@ -106,7 +145,6 @@ brew:
       - zoxide 
       - imagemagick
       - font-symbols-only-nerd-font
-
       - fastfetch
 #Stow
       - stow
@@ -116,6 +154,8 @@ brew:
 
       - syncthing
       - tailscale
+      - ice # bartender alternative
+      - noir
       # - xz
       # - carlocab/personal/unrar
       # - dockutil
