@@ -1,17 +1,26 @@
 ---
 
+# Zadania instalujące pakiety SNAP.
+# Snap jest dostępny tylko na Linuxie, więc dodajemy warunki oparte na ansible_facts.
+
 - name: "snap | list packages"
   ansible.builtin.debug:
     msg: "{{ snaps }}"
-  when: snaps is defined
+  when:
+    - snaps is defined
+    - ansible_facts['system'] == "Linux"
 
 - name: "snap | install packages"
   community.general.snap:
     name: "{{ snaps.pkgs }}"
-  when: snaps.pkgs is defined
+  when:
+    - snaps.pkgs is defined
+    - ansible_facts['system'] == "Linux"
 
 - name: "snap | install packages with --classic flag"
   community.general.snap:
     name: "{{ snaps.classics }}"
     classic: true
-  when: snaps.classics is defined
+  when:
+    - snaps.classics is defined
+    - ansible_facts['system'] == "Linux"

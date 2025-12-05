@@ -1,5 +1,8 @@
 ---
 
+# Zadania instalujące pakiety systemowe przez APT (Linux / Debian-based).
+# Używamy przyszłościowej notacji ansible_facts, ponieważ ansible_os_family będzie deprecated.
+
 - name: "packages | list"
   ansible.builtin.debug:
     msg: "{{ packages }}"
@@ -9,7 +12,7 @@
   become: true
   ansible.builtin.apt:
     update_cache: true
-  when: ansible_os_family == "Debian"
+  when: ansible_facts['os_family'] == "Debian"
 
 - name: "packages | install"
   become: true
@@ -18,16 +21,18 @@
     state: present
   when: packages is defined
 
+# Bezpieczna aktualizacja pakietów — nie zatrzymuje playbooka przy zmianach.
 - name: "apt | upgrade to the latest version"
   become: true
   ansible.builtin.apt:
     upgrade: safe
   changed_when: false
-  when: ansible_os_family == "Debian"
+  when: ansible_facts['os_family'] == "Debian"
 
+# Porządki po instalacji pakietów.
 - name: "apt | clean"
   become: true
   ansible.builtin.apt:
     autoclean: true
     autoremove: true
-  when: ansible_os_family == "Debian"
+  when: ansible_facts['os_family'] == "Debian"

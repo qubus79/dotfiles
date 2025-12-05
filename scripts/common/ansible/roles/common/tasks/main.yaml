@@ -1,18 +1,21 @@
 ---
 
+# Import zadań dla pakietów APT – tylko na Linuxie.
 - import_tasks: packages.yaml
-  when: ansible_system == "Linux"
+  when: ansible_facts['system'] == "Linux"
 
 - name: "merge common and platform specific packages"
   ansible.builtin.set_fact:
-    brew_pkgs_merged: "{{ brew.packages.common | union(brew.packages[ansible_system|lower] | d([])) }}"
+    brew_pkgs_merged: "{{ brew.packages.common | union(brew.packages[ansible_facts['system'] | lower] | d([])) }}"
 
+# Instalacja pakietów przez Homebrew – tylko na systemach, które wspierają brew.
 - import_tasks: brew.yaml
   vars:
     pkgs: '{{ brew_pkgs_merged }}'
   tags: homebrew
   when:
-    - ansible_system in ["Linux", "Darwin"]
+    - ansible_facts['system'] in ["Linux", "Darwin"]
 
+# Instalacja pakietów SNAP – tylko na Linuxie.
 - import_tasks: snap.yaml
-  when: ansible_system == "Linux"
+  when: ansible_facts['system'] == "Linux"

@@ -1,4 +1,7 @@
 ---
+# Zadania instalujące Zsh, Oh My Zsh oraz pluginy.
+# Używamy ansible_facts, ponieważ ansible_os_family jest deprecated.
+
 - name: Install dependencies on Debian/Ubuntu
   apt:
     name:
@@ -8,7 +11,7 @@
       - zsh
     state: present
     update_cache: yes
-  when: ansible_os_family == "Debian"
+  when: ansible_facts['os_family'] == "Debian"
 
 - name: Install dependencies on macOS using Homebrew
   homebrew:
@@ -18,13 +21,13 @@
       - git
       - zsh
     state: present
-  when: ansible_os_family == "Darwin"
+  when: ansible_facts['os_family'] == "Darwin"
 
 - name: Change default shell to zsh (Linux only)
   command: chsh -s $(which zsh)
   args:
     executable: /bin/bash
-  when: ansible_os_family == "Debian" and ansible_env.SHELL != "/bin/zsh"
+  when: ansible_facts['os_family'] == "Debian" and ansible_env.SHELL != "/bin/zsh"
 
 - name: Install Oh My Zsh
   shell: |

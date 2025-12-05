@@ -1,13 +1,19 @@
 ---
+# Zadania odpowiedzialne za:
+# - aktualizację Homebrew
+# - instalację tapów, casków i pakietów CLI
+# Plik zakłada, że brew działa jako zwykły użytkownik (bez sudo), szczególnie na macOS.
 
 - name: "brew | list packages"
   ansible.builtin.debug:
     msg: "{{ pkgs }}"
   when: pkgs is defined
 
+# Aktualizacja bazy Homebrew; ewentualny błąd nie zatrzymuje całej konfiguracji.
 - name: "brew | update"
   community.general.homebrew:
     update_homebrew: true
+  failed_when: false
 
 - name: "brew | install taps"
   community.general.homebrew_tap:
@@ -23,7 +29,7 @@
     accept_external_apps: true
   when:
     - brew.casks is defined
-    - ansible_system == "Darwin"
+    - ansible_facts['system'] == "Darwin"
 
 - name: "brew | install packages"
   community.general.homebrew:

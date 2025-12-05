@@ -2,7 +2,7 @@
 # Upewnij się, że główne repo dotfiles (qubus79/dotfiles) jest sklonowane do ~/.dotfiles
 - name: Ensure main dotfiles repo is present in ~/.dotfiles
   git:
-    repo: "https://github.com/qubus79/dotfiles.git"
+    repo: "https://github.com/qubus79/.dotfiles.git"
     dest: "{{ dotfiles_base_dir }}"
     version: main
     update: yes
