@@ -1,5 +1,9 @@
 ---
 
+- name: "▶️ [fonts:debian] Start: installing FiraCode font"
+  ansible.builtin.debug:
+    msg: "Instaluję font: fonts-firacode"
+
 - name: "install firacode font"
   become: true
   ansible.builtin.apt:
@@ -7,6 +11,10 @@
     update_cache: true
     autoclean: true
     autoremove: true
+
+- name: "▶️ [fonts:debian] Start: installing Powerline font"
+  ansible.builtin.debug:
+    msg: "Instaluję font: fonts-powerline"
 
 - name: "install powerline font"
   become: true

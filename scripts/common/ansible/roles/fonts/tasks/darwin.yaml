@@ -2,6 +2,10 @@
 
 - block:
 
+  - name: "▶️ [fonts:darwin] Start: installing macOS fonts via Homebrew Cask"
+    ansible.builtin.debug:
+      msg: "Instaluję fonty dla macOS: font-powerline-symbols, meslo nerd font, fira code nerd font, symbols nerd font, jetbrains mono nerd font..."
+
   - name: "install fonts"
     community.general.homebrew_cask:
       name:

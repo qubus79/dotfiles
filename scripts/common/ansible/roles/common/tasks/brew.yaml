@@ -4,10 +4,18 @@
 # - instalację tapów, casków i pakietów CLI
 # Plik zakłada, że brew działa jako zwykły użytkownik (bez sudo), szczególnie na macOS.
 
+- name: "▶️ [brew] Start: listing merged package set"
+  ansible.builtin.debug:
+    msg: "Pakiety do instalacji przez Homebrew: {{ pkgs | default('brak danych') }}"
+
 - name: "brew | list packages"
   ansible.builtin.debug:
     msg: "{{ pkgs }}"
   when: pkgs is defined
+
+- name: "▶️ [brew] Start: updating Homebrew"
+  ansible.builtin.debug:
+    msg: "Aktualizuję Homebrew (brew update)..."
 
 # Aktualizacja bazy Homebrew; ewentualny błąd nie zatrzymuje całej konfiguracji.
 - name: "brew | update"
@@ -15,11 +23,23 @@
     update_homebrew: true
   failed_when: false
 
+- name: "▶️ [brew] Start: installing taps"
+  ansible.builtin.debug:
+    msg: "Instaluję tapy: {{ brew.taps | default('brak tapów') }}"
+  when: brew.taps is defined
+
 - name: "brew | install taps"
   community.general.homebrew_tap:
     name: "{{ brew.taps }}"
     state: present
   when: brew.taps is defined
+
+- name: "▶️ [brew] Start: installing casks"
+  ansible.builtin.debug:
+    msg: "Instaluję caski: {{ brew.casks }}"
+  when:
+    - brew.casks is defined
+    - ansible_facts['system'] == "Darwin"
 
 - name: "brew | install casks"
   community.general.homebrew_cask:
@@ -31,10 +51,20 @@
     - brew.casks is defined
     - ansible_facts['system'] == "Darwin"
 
+- name: "▶️ [brew] Start: installing brew packages"
+  ansible.builtin.debug:
+    msg: "Instaluję pakiety CLI: {{ pkgs }}"
+  when: pkgs is defined
+
 - name: "brew | install packages"
   community.general.homebrew:
     name: "{{ pkgs }}"
   when: pkgs is defined
+
+- name: "▶️ [brew] Start: installing packages from source"
+  ansible.builtin.debug:
+    msg: "Instaluję pakiety ze źródeł (build-from-source): {{ brew.packages_from_source }}"
+  when: brew.packages_from_source is defined
 
 - name: "brew | install packages from source"
   community.general.homebrew:

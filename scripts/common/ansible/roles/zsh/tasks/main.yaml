@@ -2,6 +2,11 @@
 # Zadania instalujące Zsh, Oh My Zsh oraz pluginy.
 # Używamy ansible_facts, ponieważ ansible_os_family jest deprecated.
 
+- name: "▶️ [zsh] Start: installing dependencies for Debian/Ubuntu"
+  ansible.builtin.debug:
+    msg: "Instaluję zależności Zsh na Debian/Ubuntu..."
+  when: ansible_facts['os_family'] == "Debian"
+
 - name: Install dependencies on Debian/Ubuntu
   apt:
     name:
@@ -13,6 +18,11 @@
     update_cache: yes
   when: ansible_facts['os_family'] == "Debian"
 
+- name: "▶️ [zsh] Start: installing dependencies for macOS"
+  ansible.builtin.debug:
+    msg: "Instaluję zależności Zsh na macOS (Homebrew)..."
+  when: ansible_facts['os_family'] == "Darwin"
+
 - name: Install dependencies on macOS using Homebrew
   homebrew:
     name:
@@ -23,11 +33,20 @@
     state: present
   when: ansible_facts['os_family'] == "Darwin"
 
+- name: "▶️ [zsh] Start: switching default shell to zsh"
+  ansible.builtin.debug:
+    msg: "Zmiana domyślnego shella na Zsh..."
+  when: ansible_facts['os_family'] == "Debian" and ansible_env.SHELL != "/bin/zsh"
+
 - name: Change default shell to zsh (Linux only)
   command: chsh -s $(which zsh)
   args:
     executable: /bin/bash
   when: ansible_facts['os_family'] == "Debian" and ansible_env.SHELL != "/bin/zsh"
+
+- name: "▶️ [zsh] Start: installing Oh My Zsh"
+  ansible.builtin.debug:
+    msg: "Instaluję Oh My Zsh (jeśli nie istnieje)..."
 
 - name: Install Oh My Zsh
   shell: |
@@ -35,17 +54,29 @@
   args:
     creates: ~/.oh-my-zsh
 
+- name: "▶️ [zsh] Start: installing PowerLevel10k theme"
+  ansible.builtin.debug:
+    msg: "Klonuję motyw PowerLevel10k..."
+
 - name: Install PowerLevel10k theme
   git:
     repo: "https://github.com/romkatv/powerlevel10k.git"
     dest: "{{ ansible_env.HOME }}/.oh-my-zsh/custom/themes/powerlevel10k"
     depth: 1
 
+- name: "▶️ [zsh] Start: installing zsh-autosuggestions plugin"
+  ansible.builtin.debug:
+    msg: "Klonuję plugin zsh-autosuggestions..."
+
 - name: Install zsh-autosuggestions plugin
   git:
     repo: "https://github.com/zsh-users/zsh-autosuggestions.git"
     dest: "{{ ansible_env.HOME }}/.oh-my-zsh/custom/plugins/zsh-autosuggestions"
     depth: 1
+
+- name: "▶️ [zsh] Start: installing zsh-syntax-highlighting plugin"
+  ansible.builtin.debug:
+    msg: "Klonuję plugin zsh-syntax-highlighting..."
 
 - name: Install zsh-syntax-highlighting plugin
   git:

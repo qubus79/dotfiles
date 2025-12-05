@@ -2,8 +2,18 @@
 # Zadania instalujące fonty.
 # Używamy ansible_facts, ponieważ ansible_os_family jest deprecated.
 
+- name: "▶️ [fonts] Start: installing fonts for macOS"
+  ansible.builtin.debug:
+    msg: "Uruchamiam instalację fontów dla macOS (darwin.yaml)..."
+  when: ansible_facts['os_family'] == "Darwin"
+
 - import_tasks: darwin.yaml
   when: ansible_facts['os_family'] == "Darwin"
+
+- name: "▶️ [fonts] Start: installing fonts for Debian/Linux"
+  ansible.builtin.debug:
+    msg: "Uruchamiam instalację fontów dla Debian/Linux (debian.yaml)..."
+  when: ansible_facts['os_family'] == "Debian"
 
 - import_tasks: debian.yaml
   when: ansible_facts['os_family'] == "Debian"

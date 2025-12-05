@@ -1,7 +1,19 @@
 ---
+# Zadania instalujące Neovim.
+# Używamy ansible_facts, ponieważ ansible_os_family jest deprecated.
+
+- name: "▶️ [neovim] Start: installing Neovim for Debian/Linux"
+  ansible.builtin.debug:
+    msg: "Uruchamiam instalację Neovim dla Debian/Linux (debian.yaml)..."
+  when: ansible_facts['os_family'] == "Debian"
 
 - import_tasks: debian.yaml
-  when: ansible_os_family == "Debian"
+  when: ansible_facts['os_family'] == "Debian"
+
+- name: "▶️ [neovim] Start: installing Neovim for macOS"
+  ansible.builtin.debug:
+    msg: "Uruchamiam instalację Neovim dla macOS (darwin.yaml)..."
+  when: ansible_facts['os_family'] == "Darwin"
 
 - import_tasks: darwin.yaml
-  when: ansible_os_family == "Darwin"
+  when: ansible_facts['os_family'] == "Darwin"

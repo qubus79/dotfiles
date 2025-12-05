@@ -2,8 +2,18 @@
 # Zadania instalujące Tmux.
 # Używamy ansible_facts, ponieważ ansible_os_family jest deprecated.
 
+- name: "▶️ [tmux] Start: installing Tmux for Debian/Linux"
+  ansible.builtin.debug:
+    msg: "Uruchamiam instalację Tmux dla Debian/Linux (debian.yaml)..."
+  when: ansible_facts['os_family'] == "Debian"
+
 - import_tasks: debian.yaml
   when: ansible_facts['os_family'] == "Debian"
+
+- name: "▶️ [tmux] Start: installing Tmux for macOS"
+  ansible.builtin.debug:
+    msg: "Uruchamiam instalację Tmux dla macOS (darwin.yaml)..."
+  when: ansible_facts['os_family'] == "Darwin"
 
 - import_tasks: darwin.yaml
   when: ansible_facts['os_family'] == "Darwin"

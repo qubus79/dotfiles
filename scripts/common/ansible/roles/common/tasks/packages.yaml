@@ -8,11 +8,21 @@
     msg: "{{ packages }}"
   when: packages is defined
 
+- name: "▶️ [apt] Start: updating package cache"
+  ansible.builtin.debug:
+    msg: "Aktualizuję cache APT (apt update)..."
+  when: ansible_facts['os_family'] == "Debian"
+
 - name: "apt | update"
   become: true
   ansible.builtin.apt:
     update_cache: true
   when: ansible_facts['os_family'] == "Debian"
+
+- name: "▶️ [apt] Start: installing system packages"
+  ansible.builtin.debug:
+    msg: "Instaluję pakiety systemowe: {{ packages | default('brak pakietów') }}"
+  when: packages is defined
 
 - name: "packages | install"
   become: true
@@ -22,6 +32,11 @@
   when: packages is defined
 
 # Bezpieczna aktualizacja pakietów — nie zatrzymuje playbooka przy zmianach.
+- name: "▶️ [apt] Start: safe upgrade"
+  ansible.builtin.debug:
+    msg: "Wykonuję bezpieczną aktualizację pakietów (apt upgrade --safe)"
+  when: ansible_facts['os_family'] == "Debian"
+
 - name: "apt | upgrade to the latest version"
   become: true
   ansible.builtin.apt:
@@ -30,6 +45,11 @@
   when: ansible_facts['os_family'] == "Debian"
 
 # Porządki po instalacji pakietów.
+- name: "▶️ [apt] Start: cleaning APT"
+  ansible.builtin.debug:
+    msg: "Czyszczę zależności i nieużywane pakiety (apt autoremove, autoclean)..."
+  when: ansible_facts['os_family'] == "Debian"
+
 - name: "apt | clean"
   become: true
   ansible.builtin.apt:

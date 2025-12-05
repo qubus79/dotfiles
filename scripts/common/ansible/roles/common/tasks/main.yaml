@@ -1,12 +1,27 @@
 ---
 
+- name: "▶️ [common] Start: APT package setup (Linux only)"
+  ansible.builtin.debug:
+    msg: "Uruchamiam zadania APT dla Linuxa (packages.yaml)..."
+  when: ansible_facts['system'] == "Linux"
+
 # Import zadań dla pakietów APT – tylko na Linuxie.
 - import_tasks: packages.yaml
   when: ansible_facts['system'] == "Linux"
 
+- name: "▶️ [common] Start: merging package lists"
+  ansible.builtin.debug:
+    msg: "Scalam listę pakietów common + platform-specific dla Homebrew..."
+
 - name: "merge common and platform specific packages"
   ansible.builtin.set_fact:
     brew_pkgs_merged: "{{ brew.packages.common | union(brew.packages[ansible_facts['system'] | lower] | d([])) }}"
+
+- name: "▶️ [common] Start: Homebrew installation tasks"
+  ansible.builtin.debug:
+    msg: "Uruchamiam zadania Homebrew (brew.yaml)..."
+  when:
+    - ansible_facts['system'] in ["Linux", "Darwin"]
 
 # Instalacja pakietów przez Homebrew – tylko na systemach, które wspierają brew.
 - import_tasks: brew.yaml
@@ -15,6 +30,11 @@
   tags: homebrew
   when:
     - ansible_facts['system'] in ["Linux", "Darwin"]
+
+- name: "▶️ [common] Start: SNAP installation tasks (Linux only)"
+  ansible.builtin.debug:
+    msg: "Uruchamiam zadania instalacji SNAP (snap.yaml)..."
+  when: ansible_facts['system'] == "Linux"
 
 # Instalacja pakietów SNAP – tylko na Linuxie.
 - import_tasks: snap.yaml
