@@ -39,17 +39,16 @@
     msg: "Instaluję caski: {{ brew.casks }}"
   when:
     - brew.casks is defined
-    - ansible_facts['system'] == "Darwin"
+    - ansible_facts['os_family'] == "Darwin"
 
 - name: "brew | install casks"
   community.general.homebrew_cask:
     name: "{{ brew.casks }}"
     state: present
-    install_options: no-quarantine
-    accept_external_apps: true
   when:
     - brew.casks is defined
-    - ansible_facts['system'] == "Darwin"
+    - ansible_facts['os_family'] == "Darwin"
+  failed_when: false
 
 - name: "▶️ [brew] Start: installing brew packages"
   ansible.builtin.debug:
