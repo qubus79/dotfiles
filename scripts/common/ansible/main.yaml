@@ -2,7 +2,7 @@
 - hosts: 127.0.0.1
   strategy: linear
   connection: local
-  become: yes
+  become: false
   gather_facts: yes
 
   vars_files:
