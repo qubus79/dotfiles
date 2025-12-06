@@ -13,42 +13,46 @@ DOTFILES_DIR="{{ dotfiles_dir }}"
 # Nazwy katalogów w ~/.dotfiles, które będą stowowane (np. zsh, nvim, git, itp.)
 STOW_DIRS="{{ stow_dirs | join(' ') }}"
 
-# Domyślny tryb: bezpieczne restow (nie nadpisuje istniejących plików)
-STOW_OPTION="--restow"
-echo "▶️ [stow_script] Tryb: restow (odświeżanie symlinków bez nadpisywania istniejących plików)."
+# Pytanie użytkownika o wybranie opcji
+echo "Wybierz opcję dla stow:"
+echo "1) restow - odświeża symlinki bez nadpisywania istniejących plików."
+echo "2) override - nadpisuje istniejące pliki symlinkami."
+read -p "Wybierz opcję (1 lub 2): " user_choice
+
+# Sprawdzenie wyboru użytkownika
+if [[ "$user_choice" == "1" ]]; then
+    STOW_OPTION="--restow"
+    echo "Wybrano: restow"
+elif [[ "$user_choice" == "2" ]]; then
+    STOW_OPTION="--override"
+    echo "Wybrano: override"
+else
+    echo "Nieprawidłowy wybór. Przerywam."
+    exit 1
+fi
 
 echo "Stowing dotfiles using option: $STOW_OPTION"
-echo "▶️ [stow_script] Start: processing dotfiles from $DOTFILES_DIR"
-echo "📦 Katalogi do przetworzenia: $STOW_DIRS"
 
 # Pętla przechodzi po wszystkich katalogach dotfiles i uruchamia stow z odpowiednim --target
 # w zależności od systemu (macOS vs Linux) i specjalnych przypadków (sublime_text, code).
 for dir in $STOW_DIRS; do
-  echo "➡️ [stow_script] Przetwarzam katalog: $dir"
   if [[ "$OS" == "Darwin" ]]; then
     if [[ "$dir" == "sublime_text" ]]; then
       stow -v $STOW_OPTION --target="$HOME/Library/Application Support/Sublime Text" "$DOTFILES_DIR/$dir"
-      echo "   ✔️ Zakończono stow dla: $dir"
     elif [[ "$dir" == "code" ]]; then
       stow -v $STOW_OPTION --target="$HOME/Library/Application Support/Code" "$DOTFILES_DIR/$dir"
-      echo "   ✔️ Zakończono stow dla: $dir"
     else
       stow -v $STOW_OPTION --target="$HOME" "$DOTFILES_DIR/$dir"
-      echo "   ✔️ Zakończono stow dla: $dir"
     fi
   else
     if [[ "$dir" == "sublime_text" ]]; then
       stow -v $STOW_OPTION --target="$HOME/.config/sublime-text" "$DOTFILES_DIR/$dir"
-      echo "   ✔️ Zakończono stow dla: $dir"
     elif [[ "$dir" == "code" ]]; then
       stow -v $STOW_OPTION --target="$HOME/.config/Code" "$DOTFILES_DIR/$dir"
-      echo "   ✔️ Zakończono stow dla: $dir"
     else
       stow -v $STOW_OPTION --target="$HOME" "$DOTFILES_DIR/$dir"
-      echo "   ✔️ Zakończono stow dla: $dir"
     fi
   fi
 done
 
-echo "🏁 [stow_script] Wszystkie katalogi zostały przetworzone."
 echo "Dotfiles have been successfully processed with $STOW_OPTION option!"

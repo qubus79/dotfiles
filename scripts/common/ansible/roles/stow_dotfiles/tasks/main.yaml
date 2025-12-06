@@ -80,5 +80,5 @@
   args:
     executable: /bin/bash
   environment:
-    HOME: "{{ ansible_env.HOME }}"
+    HOME: "{{ ansible_facts.env.HOME }}"
   tags: stow
