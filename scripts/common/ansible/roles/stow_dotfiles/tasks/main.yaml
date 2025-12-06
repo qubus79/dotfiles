@@ -1,11 +1,20 @@
 ---
+- name: "▶️ [stow] Start: cloning/updating main dotfiles repo"
+  ansible.builtin.debug:
+    msg: "Klonuję lub aktualizuję repo ~/.dotfiles z GitHub (qubus79/.dotfiles)..."
+
 # Upewnij się, że główne repo dotfiles (qubus79/dotfiles) jest sklonowane do ~/.dotfiles
 - name: Ensure main dotfiles repo is present in ~/.dotfiles
   git:
-    repo: "https://github.com/qubus79/.dotfiles.git"
+    repo: "git@github.com:qubus79/.dotfiles.git"
     dest: "{{ dotfiles_base_dir }}"
     version: main
     update: yes
+    accept_hostkey: yes
+
+- name: "▶️ [stow] Checking if stow is installed"
+  ansible.builtin.debug:
+    msg: "Sprawdzam, czy polecenie 'stow' jest dostępne..."
 
 # Sprawdzenie, czy `stow` jest zainstalowane
 - name: Check if stow is installed
@@ -14,12 +23,22 @@
   changed_when: no
   failed_when: stow_installed.rc not in [0, 1]
 
+- name: "▶️ [stow] Installing stow on macOS (Homebrew)"
+  ansible.builtin.debug:
+    msg: "Instaluję stow przy użyciu Homebrew (macOS)..."
+  when: ansible_facts['os_family'] == "Darwin" and stow_installed.rc != 0
+
 # Instalacja stow na macOS
 - name: Ensure stow is installed on macOS using Homebrew
   homebrew:
     name: stow
     state: present
-  when: ansible_os_family == "Darwin" and stow_installed.rc != 0
+  when: ansible_facts['os_family'] == "Darwin" and stow_installed.rc != 0
+
+- name: "▶️ [stow] Installing stow on Debian/Ubuntu (APT)"
+  ansible.builtin.debug:
+    msg: "Instaluję stow przy użyciu apt (Debian/Ubuntu)..."
+  when: ansible_facts['os_family'] == "Debian" and stow_installed.rc != 0
 
 # Instalacja stow na Debian/Ubuntu
 - name: Install stow on Debian/Ubuntu
@@ -27,7 +46,11 @@
     name: stow
     state: present
     update_cache: yes
-  when: ansible_os_family == "Debian" and stow_installed.rc != 0
+  when: ansible_facts['os_family'] == "Debian" and stow_installed.rc != 0
+
+- name: "▶️ [stow] Preparing internal directory"
+  ansible.builtin.debug:
+    msg: "Tworzę katalog ~/.dotfiles/.ansible_internal (jeśli nie istnieje)..."
 
 # Ensure internal stow directory exists
 - name: Ensure internal stow directory exists
@@ -36,12 +59,20 @@
     state: directory
     mode: '0755'
 
+- name: "▶️ [stow] Generating stow script"
+  ansible.builtin.debug:
+    msg: "Kopiuję szablon stow_script.sh do ~/.dotfiles/.ansible_internal..."
+
 # Copy stow script template into internal subdirectory
 - name: Copy stow script template into internal subdirectory
   template:
     src: templates/stow_script.sh.j2
     dest: "{{ dotfiles_base_dir }}/.ansible_internal/stow_script.sh"
     mode: '0755'
+
+- name: "▶️ [stow] Running stow to symlink dotfiles"
+  ansible.builtin.debug:
+    msg: "Uruchamiam skrypt restow — tworzenie symlinków..."
 
 # Restowing dotfiles
 - name: Restow dotfiles
